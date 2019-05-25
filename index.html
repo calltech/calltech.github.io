@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>RBAC Documentation v 1.0.0 - Kubernetes RBAC Documentation v 1.0.0</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="css/extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "RBAC Documentation v 1.0.0";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> Kubernetes RBAC Documentation v 1.0.0</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href=".">RBAC Documentation v 1.0.0</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#rbac-documentation-v-100">RBAC Documentation v 1.0.0</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#created-by-noor-ameen">Created By: Noor Ameen</a></li>
+        
+            <li><a class="toctree-l3" href="#what-is-rbac">What is RBAC?</a></li>
+        
+            <li><a class="toctree-l3" href="#what-is-a-namespace">What is a Namespace?</a></li>
+        
+            <li><a class="toctree-l3" href="#what-is-service-account">What is Service Account?</a></li>
+        
+            <li><a class="toctree-l3" href="#type-of-roles">Type of Roles</a></li>
+        
+            <li><a class="toctree-l3" href="#how-to-define-a-role">How to Define a Role?</a></li>
+        
+            <li><a class="toctree-l3" href="#what-is-rolebinding">What is RoleBinding</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">Kubernetes RBAC Documentation v 1.0.0</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>RBAC Documentation v 1.0.0</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="rbac-documentation-v-100">RBAC Documentation v 1.0.0</h1>
+<h4 id="created-by-noor-ameen">Created By: Noor Ameen</h4>
+<hr />
+<p><strong>About me</strong><br>
+My Name is Noor Ameen, I am DevOps Engineer @ Kaiser Permanente &amp; Kubernetes entheuast. I have expertise in Kubernetes, Docker, Docker Swarm, Jenkins CI/CD Pipelines, Groovy Programming language, Ansible, Terraform, Python, GO, and Shell/ Bash scripting.
+I have expertise in the Google Cloud, AWS, and Microsoft Azure, Extensive experience in GKE, EKS, and ACS.
+<br></p>
+<hr />
+<h3 id="what-is-rbac">What is RBAC?</h3>
+<p>Role Base Access Control (RBAC) is a method of restricting network access based on the roles of individual users within an enterprise. RBAC is an authorization system that provides fine-grained access to cluster resources. Using RBAC, you can segregate duties within your team and grant only the amount of access to users that they need to perform their jobs. </p>
+<hr />
+<h3 id="what-is-a-namespace">What is a Namespace?</h3>
+<p>In kubernetes a namespace is a logical separation of enviroment. A namespace can be created with the following command <code>kubectl create namespace test-ns</code>.
+By default a kubernetes cluster create the following namespaces.<br></p>
+<ul>
+<li><code>default</code> - Default namespace for objects with no other namespace.</li>
+<li><code>kube-system</code> - The namespace for objects created by the kuberneyes system.</li>
+<li><code>kube-public</code> - The namespace created autmatically and readable by all users.</li>
+</ul>
+<p><strong>Create a namespace</strong></p>
+<pre><code>naresh@devops-server:~$ kubectl create namespace test-ns
+namespace/test-ns created
+naresh@devops-server:~$ 
+</code></pre>
+
+<p><strong>Verify if the name space has been created</strong></p>
+<pre><code>naresh@devops-server:~$ kubectl get namespace
+NAME              STATUS   AGE
+default           Active   22h
+kube-node-lease   Active   22h
+kube-public       Active   22h
+kube-system       Active   22h
+test-ns           Active   105s
+naresh@devops-server:~$ 
+
+</code></pre>
+
+<p>Here some more useful namespace commands:<br></p>
+<ul>
+<li><code>kubectl get namespace</code> - Get namespaces</li>
+<li><code>kubectl describe namespace &lt;NAME-OF-NAMESPACE&gt;</code> - Get details about a namespace</li>
+</ul>
+<hr />
+<h3 id="what-is-service-account">What is Service Account?</h3>
+<p>A service account provides an identity for processes that run in a Pod.
+A service account is a user account which can have access to the kubernetes cluster resources. A service account can be operated by the human or API service to interact with the cluster. Service account can be created with the following command <code>kubectl create serviceaccount test-service</code>. </p>
+<pre><code class="Shell">naresh@devops-server:~$ kubectl create serviceaccount test-service
+serviceaccount/test-service created
+naresh@devops-server:~$ 
+</code></pre>
+
+<p><strong>Varify if the name space has been created</strong></p>
+<pre><code>naresh@devops-server:~$ kubectl get sa
+NAME           SECRETS   AGE
+default        1         22h
+test-service   1         8m5s
+naresh@devops-server:~$ 
+
+</code></pre>
+
+<h3 id="type-of-roles">Type of Roles</h3>
+<p>Definition of the permissions for each Kubernetes resource type.<br>
+There are two type of Roles in kubernetes cluster, 1: <code>Role</code> &amp; <code>ClusterRole</code>.<br>
+<code>Role</code> access are limited to a particular namespace and <code>ClusterRole</code> has cluster wide access to resources.</p>
+<h3 id="how-to-define-a-role">How to Define a Role?</h3>
+<p>The follwing <code>Role.yaml</code> file will define a role in the kubernetes cluster.</p>
+<pre><code class="YAML">kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: mynamespace
+  name: example-role
+rules:
+- apiGroups: [&quot;&quot;]
+  resources: [&quot;pods&quot;]
+  verbs: [&quot;get&quot;, &quot;watch&quot;, &quot;list&quot;]
+</code></pre>
+
+<p>We can dissect the <code>Role.yaml</code> file in details.</p>
+<pre><code class="YAML">kind: Role
+</code></pre>
+
+<p>In the 1st line we dine the kubernetes object type which is <code>Role</code></p>
+<h3 id="what-is-rolebinding">What is RoleBinding</h3>
+<p>Definition of what Subjects (users) have which Roles.<br></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2019-05-25 01:51:32
+-->
